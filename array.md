@@ -44,8 +44,7 @@
     ```
 * every(functionName) (利用函式來確認陣列內容都符合規則)
 
-    如果陣列全部符合則回傳 true，有一個不對就回傳 false
-
+    如果陣列全部符合則回傳 **true**，有一個不對就回傳 **false**
 
     >**注意** : 使用方法後不會改變原先的陣列，若陣列沒有值不會執行。
     ```javascript
@@ -54,5 +53,21 @@
             return age >= 18;
         }
         console.log(ages.every(Adult));  //  true
+    ```
+* filter(functionName) (利用函式來確認陣列內容都符合規則)
+
+    回傳一個**陣列**，裡面有符合函式規則的元素
+
+    >**注意** : 如果沒有任何一個元素通過則會回傳一個空陣列
+    ```javascript
+        var ages = [18, 19, 29, 26, 21, 24];
+        function Adult(age) {
+            return age >= 20;
+        }
+        console.log(ages.filter(Adult));  //  [ 29, 26, 21, 24 ]
+        var ggyy = ages.filter(function (age, index, arr) {
+            return age >= 25;
+        });
+        console.log(ggyy);  //  [ 29, 26 ]
     ```
     
