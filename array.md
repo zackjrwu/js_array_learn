@@ -42,3 +42,6 @@
 	names.copyWithin(1,0);
 	consoel.log(names);  //  [ 'Zack', 'Zack', 'Peter' ]
     ```
+
+    ok 這就是我要做的
+    
