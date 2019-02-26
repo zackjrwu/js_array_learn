@@ -42,6 +42,17 @@
 	names.copyWithin(1,0);
 	consoel.log(names);  //  [ 'Zack', 'Zack', 'Peter' ]
     ```
+* every(functionName) (利用函式來確認陣列內容都符合規則)
 
-    ok 這就是我要做的
+    如果陣列全部符合則回傳 true，有一個不對就回傳 false
+
+
+    >**注意** : 使用方法後不會改變原先的陣列，若陣列沒有值不會執行。
+    ```javascript
+        var ages = [18, 19, 29, 26, 21, 24];
+        function Adult(age) {
+            return age >= 18;
+        }
+        console.log(ages.every(Adult));
+    ```
     
