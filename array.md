@@ -53,6 +53,6 @@
         function Adult(age) {
             return age >= 18;
         }
-        console.log(ages.every(Adult));
+        console.log(ages.every(Adult));  //  true
     ```
     
