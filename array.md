@@ -70,4 +70,41 @@
         });
         console.log(ggyy);  //  [ 29, 26 ] 
     ```
+
+* fill(string_number_var...) (取代陣列所有元素)
+
+    將陣列原有的元素全部替換成括號裡面的資訊
+
+    >**注意** : ES6語法，IE11與以下都不支援
+    ```javascript
+        var fruits = ['apple', 'banana', 'orange', 'kiwi'];
+        fruits.fill('kiwi');
+        console.log(fruits);  //  [ 'kiwi', 'kiwi', 'kiwi', 'kiwi' ]
+    ```
+
+* find(functionName) (找尋陣列的元素)
+
+    找尋陣列所有元素中第一個符合函式規則的元素並回傳，一樣IE11與以下不支援 ~~TMD~~
+
+    >**注意** : ES6語法，若空陣列不執行，若陣列沒有元素符合回傳 **undefined**，不改變原始陣列。
+    ```javascript
+        var ages = [18, 19, 29, 26, 21, 24];
+        function Adult(age) {
+            return age >= 20;
+        }
+        var ans = ages.find(Adult);
+        console.log(ans);  //  29
+    ```
+* findIndex(functionName) (找尋陣列中的元素)
     
+    找尋陣列所有元素中第一個符合函式規則的元素並回傳他在此陣列中的 **index**，一樣IE11與以下不支援 ~~TMD~~
+
+    >**注意** : ES6語法，若空陣列不執行，若陣列沒有元素符合回傳 **-1**，不改變原始陣列。
+    ```javascript
+        var ages = [18, 19, 29, 26, 21, 24];
+        function Adult(age) {
+            return age >= 20;
+        }
+        var ans = ages.findIndex(Adult);
+        console.log(ans);  //  2
+    ```
