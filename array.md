@@ -68,6 +68,6 @@
         var ggyy = ages.filter(function (age, index, arr) {
             return age >= 25;
         });
-        console.log(ggyy);  //  [ 29, 26 ] is ok
+        console.log(ggyy);  //  [ 29, 26 ] is ok cool
     ```
     
