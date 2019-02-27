@@ -69,5 +69,6 @@
             return age >= 25;
         });
         console.log(ggyy);  //  [ 29, 26 ] is ok cool pc again
+        // notebook
     ```
     
