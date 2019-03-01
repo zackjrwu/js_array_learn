@@ -53,7 +53,7 @@
 
     如果陣列全部符合則回傳 **true**，有一個不對就回傳 **false**
 
-    >**注意** : 使用方法後不會改變原先的陣列，若陣列沒有值不會執行。
+    >**注意** : 使用方法後不會改變原先的陣列，若陣列沒有值回傳 true ???? 
     ```javascript
         var ages = [18, 19, 29, 26, 21, 24];
         function Adult(age) {
@@ -61,6 +61,20 @@
         }
         console.log(ages.every(Adult));  //  true
     ```
+
+* arrayName.some(functionName) (利用函式來確認陣列內容有一個符合規則)
+
+    如果陣列有一個符合則回傳 **true**，全部不對回傳 **false**
+
+    >**注意** : 使用方法後不會改變原先的陣列，若陣列沒有值回傳 **false**。
+    ```javascript
+        var ages = [18, 9, 2, 6, 1, 4];
+        function Adult(age) {
+            return age >= 18;
+        }
+        console.log(ages.some(Adult));  //  true
+    ```
+
 
 * filter(functionName) (利用函式來確認陣列內容符合規則)
 
@@ -148,6 +162,20 @@
             第5位成年者是21歲
             第6位成年者是24歲  */
     ```
+* map(functionName) (讓陣列每個值都使用一次函式)
+
+    把陣列裡的所有元素都使用括號中的函式
+
+    >**注意** : map() 與 forEach() 極為相似，差異是在**回傳**的陣列與否
+    
+    >**注意** : 當陣列沒有任何元素時不執行函式，函式不改變原有的陣列
+    ```javascript
+    var ages = [19, 27, 34, 5, 21];
+    function addOne(age) {
+    return age + 1;
+    }
+    console.log(ages.map(addOne));  //  [ 20, 28, 35, 6, 22 ]
+    ```
 
 * Array.from(string) (把一個字串變成陣列)
 
@@ -174,6 +202,17 @@
         console.log(array.join('|'));  //  miki|9|Joe|Zack
     ```
 
+*  toString() (把陣列或是物件轉成一個字串)
+    
+    >**注意** : 不會改變原使陣列，型態也會從陣列變成字串
+    ```javascript
+        var ages = [14, 7, 9, 55, 43, 22, 100, 25];
+        var ans = ages.toString();
+        console.log(ans);  //  14,7,9,55,43,22,100,25
+        console.log(ans.constructor);  //  [Function: String]
+        console.log(ages.constructor);  //  [Function: Array]
+    ```
+
 * includes() (查找有無在陣列中)
 
     找尋括號中的值有沒有在陣列中，回傳 **true** 或 **false**
@@ -197,13 +236,146 @@
         console.log(array.indexOf('Zack'));  //  3
         console.log(array.indexOf('zack'));  //  -1
     ``` 
+
 * Array.isArray(variable) (判斷是否為陣列)
 
     判斷括號中的變數是否為陣列，回傳 **true** 或 **false**
     
     ```javascript
-    var array = ['miki', 9, 'Joe', 'Zack'];
-    var gg = 'bb';
-    console.log(Array.isArray(array));  //  true
-    console.log(Array.isArray(gg));  //  false
+        var array = ['miki', 9, 'Joe', 'Zack'];
+        var gg = 'bb';
+        console.log(Array.isArray(array));  //  true
+        console.log(Array.isArray(gg));  //  false
     ```
+
+* arrayName.lastIndexOf(string) (顯示出他的索引)
+
+    判斷括號中的字串在陣列中的索引，從**後面算過來**
+    
+    >**注意** : 只會顯示出第一個找到的，如果沒有回傳 **-1**
+    ```javascript
+        var names = ['Miki', 'Zack', 'Ben', 'Mary', 'Zack'];
+        console.log(names.lastIndexOf('Zack'));  //  4
+        console.log(names.lastIndexOf('Benson'));  //  -1
+    ```
+* arrayName.pop() (彈出陣列中的最後一個元素)
+
+    把陣列中的最後一個元素取出，原始陣列的最後一個元素就此消失
+
+    ```javascript
+        var ages = [19, 27, 34, 5, 21];
+        console.log(ages.pop());  //  21
+        console.log(ages);  //  [ 19, 27, 34, 5 ]
+    ```
+
+* arrayName.shift() (彈出陣列中的第一個元素)
+
+    把陣列中的第一個元素取出，原始陣列的第一個元素就此消失
+
+    >**注意** : 和 pop()極為相似，差異在彈出**第一個**或**最後一個**元素
+    ```javascript
+        var ages = [19, 27, 34, 5, 21];
+        console.log(ages.shift());  //  19
+        console.log(ages);  //  [ 27, 34, 5, 21 ]
+    ```
+
+* arrayName.push() (推入元素到陣列的最後方)
+
+    >**注意** : 會改變原始的陣列內容
+    ```javascript
+        var ages = [14, 7, 9, 55, 43, 22, 100, 25];
+        ages.push(22);
+        console.log(ages);  //  [ 14, 7, 9, 55, 43, 22, 100, 25, 22 ]
+    ```
+
+* arrayName.unshift() (推入元素到陣列的最前方)
+
+    >**注意** : 會改變原始的陣列內容
+    ```javascript
+        var ages = [14, 7, 9, 55, 43, 22, 100, 25];
+        ages.unshift(22);
+        console.log(ages);  //  [ 22,14, 7, 9, 55, 43, 22, 100, 25 ]
+    ```
+
+* arrayName.reduce() (將陣列裡的元素都加總起來)
+
+    這個的好處是在做加總時不用使用到外面的變處做重複存取，**左到右**
+
+    >**注意** : 注意此函數的前兩個參數，第一個是 index 0 的值，第二個是 index 1 的值
+    ```javascript
+        var ages = [19, 27, 34, 5, 21];
+        var ans = ages.reduce(function (total, cur) {
+            console.log(total);
+            console.log(cur);
+            return total += cur;
+        });
+        console.log(ans);
+        //       19             27             46        34 80 5 85 21 106
+        // total += ages[0]   ages[1]    total += ages[1]......
+    ```
+
+* arrayName.reduceRight() (將陣列裡的元素都加總起來)
+
+    這個的好處是在做加總時不用使用到外面的變處做重複存取，**右到左**
+
+    >**注意** : 注意此函數的前兩個參數，第一個是 index **最後一個** 的值，**第二個是 最後一個減 1** 的值
+    ```javascript
+        var ages = [19, 27, 34, 5, 21];
+        var ans = ages.reduceRight(function (total, cur) {
+            console.log(total);
+            console.log(cur);
+            return total += cur;
+        });
+        console.log(ans);
+        //          21                               5                      26        34 60 27 87 19 106
+        // total += ages[最後一個元素]   ages[最後一個元素前 1 個]    total += ages[1]......
+    ```
+
+* arrayName.reverse() (把陣列元素的順序從尾到頭顛倒排序放置)
+
+    >**注意** : 這個操作會改變到原始的陣列內容
+    ```javascript
+        var ages = [19, 27, 34, 5, 21];
+        ges.reverse();
+        console.log(ages);  //  [ 21, 5, 34, 27, 19 ]
+    ```
+
+* arrayName.slice(想要切割的第一個元素 index, 到最後一個切個元素 index (不包括))
+  
+    >**注意** : 這個操作**不改變**到原始的陣列內容
+    ```javascript
+        var ages = [19, 27, 34, 5, 21];
+        console.log(ages.slice(1, 4));  //  [ 27, 34, 5 ]
+        console.log(ages);  //  [ 19, 27, 34, 5, 21 ]
+    ```
+
+* arrayName.splice(想要從第幾個元素 index 開始切 (包括), 包括自己要切幾個)
+  
+    >**注意** : 這個操作**改變**到原始的陣列內容
+    ```javascript
+        var ages = [19, 27, 34, 5, 21];
+        console.log(ages.splice(1, 2));  //  [ 27, 34 ]
+        console.log(ages);  //  [ 19, 5, 21 ]
+    ```
+* arrayName.sort(small,big) (排序字串，做些操作可以排數字)
+
+    >**注意** : 會改變原始的陣列順序
+    ```javascript
+        var ages = [14, 7, 9, 55, 43, 22, 100, 25];
+        //  由於是根據文字排序，所以不做一些操作會壞掉
+        console.log(ages.sort());  //  [ 100, 14, 22, 25, 43, 55, 7, 9 ]
+        //  小排到大
+        ages.sort(function (small, big) {
+            return small - big;
+        });
+        console.log(ages);  //  [ 7, 9, 14, 22, 25, 43, 55, 100 ]  
+        console.log(ages[0]);  //  7
+        //  大排到小
+        ages.sort(function (small, big) {
+            return big - small;
+        });
+        console.log(ages);  //  [ 100, 55, 43, 25, 22, 14, 9, 7 ]
+        console.log(ages[0]);  //  100
+    ```
+  
+
