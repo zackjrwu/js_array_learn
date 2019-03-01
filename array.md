@@ -294,7 +294,7 @@
     ```javascript
         var ages = [14, 7, 9, 55, 43, 22, 100, 25];
         ages.unshift(22);
-        console.log(ages);  //  [ 22,14, 7, 9, 55, 43, 22, 100, 25 ]
+        console.log(ages);  //  [ 22, 14, 7, 9, 55, 43, 22, 100, 25 ]
     ```
 
 * arrayName.reduce() (將陣列裡的元素都加總起來)
